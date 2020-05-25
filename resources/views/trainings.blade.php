@@ -9,6 +9,15 @@
                 <div class="card-body">
                     <ul>
                     @foreach ($trainings as $training)
+                        @if (Auth::user()->role == "teacher" && $training->teacher_id == Auth::user()->id)
+                        <li> {{$training->name}}
+                            <ul>
+                                <li> {{$training->duration}} </li>
+                                <li> {{$training->user->name}} </li>
+                                <li> <a href="{{ route('sessions', $training->id) }}">Voir toutes les sessions</a> </li>
+                            </ul>
+                        </li>
+                        @elseif (Auth::user()->role == "adm" ||  Auth::user()->role == "user")
                         <li> {{$training->name}} - @if (Auth::user()->role == "adm") <a href="{{ route('edit_training', $training->id) }}">Editer la formation</a> @endif
                             <ul>
                                 <li> {{$training->duration}} </li>
@@ -16,6 +25,7 @@
                                 <li> <a href="{{ route('sessions', $training->id) }}">Voir toutes les sessions</a> </li>
                             </ul>
                         </li>
+                        @endif
                     @endforeach
                     </ul>
                 </div>
