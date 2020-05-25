@@ -143,7 +143,7 @@ php artisan key:generate
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=your-db-port
-DB_DATABASE=training
+DB_DATABASE=organization
 DB_USERNAME=your-db-password
 DB_PASSWORD=your-db-password
 ```
