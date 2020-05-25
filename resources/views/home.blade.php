@@ -30,10 +30,10 @@
                         <div class="alert" role="alert">
                             <a href="{{ url('/users') }}">Les utilisateurs</a> - <a href="{{ url('/trainings') }}">Les Formations</a>
                         </div>
-                    @elseif (Auth::user()->role == "prof")
+                    @elseif (Auth::user()->role == "teacher")
                     Teacher
                         <div class="alert alert-success" role="alert">
-                            <a href="">Les Formations dont je suis responsables</a> - <a href="">Mes sessions </a>
+                            <a href="{{ url('/trainings') }}">Les Formations dont je suis responsables</a> - <a href="">Mes sessions </a>
                         </div>
                     @elseif (Auth::user()->role == "user")
                     Employee
