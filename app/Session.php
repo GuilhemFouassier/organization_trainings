@@ -31,7 +31,7 @@ class Session extends Model
     }
 
     /**
-     * Get the teacher that has the session.
+     * Get the grades of the session.
      */
     public function grades()
     {
