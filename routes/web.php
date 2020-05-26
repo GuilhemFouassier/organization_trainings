@@ -20,16 +20,21 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/users', 'AdminController@users')->name('users');
 Route::get('/add_user', 'AdminController@add_user')->name('add_user');
 Route::post('/create_user', 'AdminController@create_user')->name('create_user');
 Route::get('/edit_user/{id}', 'AdminController@edit_user')->name('edit_user');
 Route::post('/update_user/{id}', 'AdminController@update_user')->name('update_user');
 Route::get('/delete_user/{id}', 'AdminController@delete_user')->name('delete_user');
-Route::get('/trainings', 'TrainingController@index')->name('trainings');
 Route::get('/add_training', 'AdminController@add_training')->name('add_training');
 Route::post('/create_training', 'AdminController@create_training')->name('create_training');
 Route::get('/edit_training/{id}', 'AdminController@edit_training')->name('edit_training');
 Route::post('/update_training/{id}', 'AdminController@update_training')->name('update_training');
 Route::get('/delete_training/{id}', 'AdminController@delete_training')->name('delete_training');
+
+Route::get('/trainings', 'TrainingController@index')->name('trainings');
+
 Route::get('/sessions/{id}', 'SessionController@index')->name('sessions');
+
+Route::get('/report/{id}', 'ReportController@index')->name('report');
