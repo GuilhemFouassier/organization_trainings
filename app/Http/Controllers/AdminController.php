@@ -167,4 +167,40 @@ class AdminController extends Controller
         $training->delete();
         return redirect()->route('trainings');
     }
+
+    /**
+     * Go to page create_session.
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function add_session($id, Request $request)
+    {
+        $training = Training::find($id);
+        $users = User::where('role', 'teacher')->get();
+        $rooms = Room::all();
+        return view('add_session')->with(compact('training', 'users', 'rooms'));
+    }
+
+    /**
+     * Create Session in database.
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function create_session($id, Request $request)
+    {
+        $session = new Session;
+        $session->name = $request->name;
+        $session->date = $request->date;
+        $session->availables_seats = $request->availables_seats;
+        $session->configuration = $request->configuration;
+        $session->room_id = $request->room_id;
+        $session->training_id = $id;
+        $session->save();
+        $report = new Report;
+        $report->session_id = $session->id;
+        $report->teacher_id = $request->teacher_id;
+        $report->save();
+        return redirect()->action('SessionController@index', ['id'=>$id]);
+
+    }
 }
