@@ -16,6 +16,7 @@
                                 <li> {{$session->room->name}} </li>
                                 <li> {{$session->report->user->name}} </li>
                                 <li> <a href="">Voir toutes les sessions</a> </li>
+                                <li> <a href="{{ route('add_session') }}">Ajouter une nouvelle session</a> </li>
                             </ul>
                         </li>
                     @endforeach

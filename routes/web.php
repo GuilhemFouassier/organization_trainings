@@ -33,3 +33,5 @@ Route::get('/edit_training/{id}', 'AdminController@edit_training')->name('edit_t
 Route::post('/update_training/{id}', 'AdminController@update_training')->name('update_training');
 Route::get('/delete_training/{id}', 'AdminController@delete_training')->name('delete_training');
 Route::get('/sessions/{id}', 'SessionController@index')->name('sessions');
+Route::get('/add_session/{id}', 'AdminController@add_session')->name('add_session');
+Route::post('/create_session/{id}', 'AdminController@create_session')->name('create_session');
