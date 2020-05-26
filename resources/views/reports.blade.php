@@ -7,12 +7,12 @@
                 <div class="card-header">Compte-rendu de la session {{$session->name}}:</div>
                 <div class="card-body">
                     <ul>
-                            <li>
-                                <ul>
-                                    <li> {{$report->name}} </li>
-                                    <li> {{$report->content}} </li>
-                                </ul>
-                            </li>
+                        <li>
+                            <ul>
+                                <li> {{$report->name}} </li>
+                                <li> {{$report->content}} </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
