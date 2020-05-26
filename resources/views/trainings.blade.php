@@ -22,7 +22,7 @@
                             <ul>
                                 <li> {{$training->duration}} </li>
                                 <li> {{$training->user->name}} </li>
-                                <li> <a href="{{ route('sessions') }}">Voir toutes les sessions</a> </li>
+                                <li> <a href="{{ route('sessions', $training->id) }}">Voir toutes les sessions</a> </li>
                             </ul>
                         </li>
                         @endif
