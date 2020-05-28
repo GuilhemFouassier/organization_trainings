@@ -29,10 +29,12 @@
                                         @endif
                                     @endforeach
                             @else
-                                @if ($session->availables_seats > 0)
-                                    <li> <a href="{{route('registration', $session->id) }}"> Inscription </a> </li>
-                                @else
-                                    <li>Il n'y a plus de place</li>
+                                @if (Auth::user()->role == "user")
+                                    @if ($session->availables_seats > 0)
+                                        <li> <a href="{{route('registration', $session->id) }}"> Inscription </a> </li>
+                                    @else
+                                        <li>Il n'y a plus de place</li>
+                                    @endif
                                 @endif
                             @endif
                             </ul>
