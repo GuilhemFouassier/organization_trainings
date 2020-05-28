@@ -201,6 +201,52 @@ class AdminController extends Controller
         $report->teacher_id = $request->teacher_id;
         $report->save();
         return redirect()->action('SessionController@index', ['id'=>$id]);
+    }
 
+    /**
+     * Edit Session in database.
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function edit_session($id, Request $request)
+    {
+        $session = Session::find($id);
+        $users = User::where('role', 'teacher')->get();
+        $rooms = Room::all();
+        return view('edit_session')->with(compact('session', 'users', 'rooms'));
+    }
+
+    /**
+     * Update Session in database.
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function update_session($id, Request $request)
+    {
+        $session = Session::find($id);
+        $session->name = $request->name;
+        $session->date = $request->date;
+        $session->availables_seats = $request->availables_seats;
+        $session->configuration = $request->configuration;
+        $session->room_id = $request->room_id;
+        $session->save();
+        $report = Report::all()->where('session_id', $id)->first();
+        $report->teacher_id = $request->teacher_id;
+        $report->save();
+        return redirect()->action('SessionController@index', ['id'=>$session->training_id]);
+    }
+
+    /**
+     * Delete Report in database.
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function delete_report($id)
+    {
+        $report = Report::all()->where('session_id', $id)->first();
+        $report->forceDelete();
+        $session = Session::find($id);
+        $session->delete();
+        return redirect()->route('trainings');
     }
 }
