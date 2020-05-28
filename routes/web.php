@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/users', 'AdminController@users')->name('users');
 Route::get('/add_user', 'AdminController@add_user')->name('add_user');
 Route::post('/create_user', 'AdminController@create_user')->name('create_user');
@@ -35,3 +36,5 @@ Route::get('/delete_training/{id}', 'AdminController@delete_training')->name('de
 Route::get('/sessions/{id}', 'SessionController@index')->name('sessions');
 Route::get('/add_session/{id}', 'AdminController@add_session')->name('add_session');
 Route::post('/create_session/{id}', 'AdminController@create_session')->name('create_session');
+Route::get('/reports/{id}', 'ReportController@index')->name('reports');
+Route::get('/registration/{id}', 'UserController@registration')->name('registration');

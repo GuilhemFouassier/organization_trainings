@@ -12,7 +12,7 @@ class Grade extends Model
 
     public function session()
     {
-        return $this->belongsTo('App\Session', 'id', 'session_id');
+        return $this->belongsTo('App\Session', 'session_id', 'id');
     }
 
     /**
@@ -21,6 +21,6 @@ class Grade extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'id', 'user_id');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 }
