@@ -25,6 +25,16 @@
                             @if (Auth::user()->role == "user")
                                 @if ($session->grades->isNotEmpty() & Auth::user()->grades->isNotEmpty())
                                     @foreach( Auth::user()->grades as $grade )
+                        <li> {{$session->name}}
+                            <ul>
+                                <li> {{$session->date}} </li>
+                                <li> {{$session->availables_seats}} </li>
+                                <li> {{$session->configuration}} </li>
+                                <li> {{$session->room->name}} </li>
+                                <li>Professeur : {{$session->report->user->name}} </li>
+                                @if (Auth::user()->role == "user" & $session->grades->isNotEmpty() & Auth::user()->grades->isNotEmpty())
+                                    @if(!Auth::user()->grades->isEmpty())
+                                        @foreach( Auth::user()->grades as $grade )
                                         @if($grade->session_id == $session ->id)
                                             <li>Vous êtes déjà inscrit </li>
                                         @endif
@@ -37,6 +47,16 @@
                                     @endif
                                 @endif
                             @endif
+                                    <li> <a href="{{route('registration', $session->id) }}"> Inscription </a> </li>
+                                @endif
+
+                                @if($session->report->content == null & $session->report->name == null)
+                                    @if(Auth::user()->role == "teacher")
+                                    <li><a href="">Créer un compte-rendu</a> </li>
+                                    @endif
+                                @else
+                                    <li><a href="{{ route('reports', $session->id) }}">Voir le compte-rendu</a></li>
+                                @endif
                             </ul>
                     </li>
                     @endforeach
