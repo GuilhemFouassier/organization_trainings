@@ -17,7 +17,6 @@
                                 <li> {{$session->room->name}} </li>
                                 <li> {{$session->report->user->name}} </li>
                                 <li> <a href="{{ route('reports', $session->id) }}">Voir le compte-rendu</a> </li>
-                                <li> <a href="">Voir toutes les sessions</a> </li>
                                 @if (Auth::user()->role == "user" & $session->grades->isNotEmpty() & Auth::user()->grades->isNotEmpty()) 
                                     @if(!Auth::user()->grades->isEmpty()) 
                                         @foreach( Auth::user()->grades as $grade )
