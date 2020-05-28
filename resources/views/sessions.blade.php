@@ -15,6 +15,7 @@
                                 <li> {{$session->availables_seats}} </li>
                                 <li> {{$session->configuration}} </li>
                                 <li> {{$session->room->name}} </li>
+                                <li> {{$session->report->user->name}} </li>
                                 <li> <a href="{{ route('reports', $session->id) }}">Voir le compte-rendu</a> </li>
                                 <li> <a href="">Voir toutes les sessions</a> </li>
                             </ul>
