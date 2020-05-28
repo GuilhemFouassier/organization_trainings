@@ -17,17 +17,8 @@ class ReportController extends Controller
      */
     public function index($id)
     {
-        $reports = Report::where('session_id', $id)->get();
-        $sessions = Session::find($id);
-        return view('report', ['sessions'=>$sessions], ['reports'=>$reports]);
-
-
         $session = Session::find($id);
-        $reports = Report::all();
-
-        if($reports->session_id == $id)
-            return view('reports', ['reports'=>$reports]);
-        else
-            die('aucun compte-rendu pour cette session');
+        $reports = Report::where('session_id', '=', $id)->get();
+        return view('reports', ['session'=>$session], ['reports'=>$reports]);
     }
 }
