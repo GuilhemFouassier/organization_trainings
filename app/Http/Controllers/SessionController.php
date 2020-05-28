@@ -20,4 +20,15 @@ class SessionController extends Controller
         $training = Training::find($id);
         return view('sessions',['training'=>$training], ['sessions'=>$sessions]);
     }
+
+    /**
+     * View all sessions of a training.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function all_sessions()
+    {
+        $sessions = Session::all();
+        return view('all_sessions', ['sessions'=>$sessions]);
+    }
 }
