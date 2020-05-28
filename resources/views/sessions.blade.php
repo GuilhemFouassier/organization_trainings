@@ -16,6 +16,7 @@
                             <li> {{$session->configuration}} </li>
                             <li> {{$session->room->name}} </li>
                             <li>Professeur : {{$session->report->user->name}} </li>
+                            <li><a href="{{ route('edit_session', $session->id) }}">Editer la session</a></li>
                             @if($session->report === null)
                                 <li><a href="">Créer un compte-rendu</a> </li>
                             @else

@@ -18,6 +18,6 @@ class SessionController extends Controller
     {
         $sessions = (Session::with('report.user', 'grades.user')->where(array('training_id'=>$id))->get());
         $training = Training::find($id);
-        return view('sessions', ['sessions'=>$sessions], ['training'=>$training]);
+        return view('sessions',['training'=>$training], ['sessions'=>$sessions]);
     }
 }
