@@ -21,15 +21,14 @@
                             @else
                                 <li><a href="{{ route('reports', $session->id) }}">Voir le compte-rendu</a></li>
                             @endif
-                            
-                            @if (Auth::user()->role == "user" & $session->grades->isNotEmpty() & Auth::user()->grades->isNotEmpty())
+                            @if (Auth::user()->role == "user")
+                                @if ($session->grades->isNotEmpty() & Auth::user()->grades->isNotEmpty())
                                     @foreach( Auth::user()->grades as $grade )
                                         @if($grade->session_id == $session ->id)
                                             <li>Vous êtes déjà inscrit </li>
                                         @endif
                                     @endforeach
-                            @else
-                                @if (Auth::user()->role == "user")
+                                @else
                                     @if ($session->availables_seats > 0)
                                         <li> <a href="{{route('registration', $session->id) }}"> Inscription </a> </li>
                                     @else
