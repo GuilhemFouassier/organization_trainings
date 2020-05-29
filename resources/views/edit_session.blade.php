@@ -23,7 +23,7 @@
                         Professeur : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
                         {!! Form::submit('Update Session') !!}
                     {!! Form::close() !!}
-                    <a href="{{ route('delete_report', $session->id) }}">Supprimer la session</a>
+                    <a href="{{ route('delete_session', $session->id) }}">Supprimer la session</a>
                 </div>
             </div>
         </div>

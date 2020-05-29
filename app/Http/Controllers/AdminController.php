@@ -237,11 +237,11 @@ class AdminController extends Controller
     }
 
     /**
-     * Delete Report in database.
+     * Delete Session in database.
      * 
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function delete_report($id)
+    public function delete_session($id)
     {
         $report = Report::all()->where('session_id', $id)->first();
         $report->forceDelete();

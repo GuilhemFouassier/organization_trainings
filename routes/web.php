@@ -38,16 +38,12 @@ Route::get('/add_session/{id}', 'AdminController@add_session')->name('add_sessio
 Route::post('/create_session/{id}', 'AdminController@create_session')->name('create_session');
 Route::get('/edit_session/{id}', 'AdminController@edit_session')->name('edit_session');
 Route::post('/update_session/{id}', 'AdminController@update_session')->name('update_session');
-Route::get('/delete_report/{id}', 'AdminController@delete_report')->name('delete_report');
+Route::get('/delete_session/{id}', 'AdminController@delete_session')->name('delete_session');
 Route::get('/all_sessions', 'SessionController@all_sessions')->name('all_sessions');
-Route::get('/registration/{id}', 'UserController@registration')->name('registration');
 Route::get('/report/{id}', 'ReportController@index')->name('report');
 Route::get('/add_report/{id}', 'TeacherController@add_report')->name('add_report');
 Route::post('/create_report/{id}', 'TeacherController@create_report')->name('create_report');
 Route::get('/edit_report/{id}', 'TeacherController@edit_report')->name('edit_report');
 Route::post('/update_report/{id}', 'TeacherController@update_report')->name('update_report');
 Route::get('/delete_report/{id}', 'TeacherController@delete_report')->name('delete_report');
-
-
-
-
+Route::get('/registration/{id}', 'UserController@registration')->name('registration');
