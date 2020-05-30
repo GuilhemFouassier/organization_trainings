@@ -23,7 +23,7 @@
                                             @if($session->report === null)
                                                 <li><a href="">Créer un compte-rendu</a> </li>
                                             @else
-                                                <li><a href="{{ route('reports', $session->id) }}">Voir le compte-rendu</a></li>
+                                                <li><a href="{{ route('report', $session->id) }}">Voir le compte-rendu</a></li>
                                             @endif
                                             @if (Auth::user()->role == "user")
                                                 @if ($session->grades->isNotEmpty() & Auth::user()->grades->isNotEmpty())
