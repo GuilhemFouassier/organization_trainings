@@ -31,7 +31,7 @@ class UserController extends Controller
         $session = Session::find($id);
         $session->availables_seats = (($session->availables_seats) - 1);
         $session->save();
-        return redirect()->action('TrainingController@index');
+        return redirect()->action('SessionController@index', ['id'=>$session->training_id]);
     }
 
 }
