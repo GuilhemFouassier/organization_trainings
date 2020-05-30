@@ -10,6 +10,9 @@
                         <li> {{$report->name}}
                             <ul>
                                 <li> {{$report->content}} </li>
+                                    @if(Auth::user()->role == "teacher")
+                                         <li><a href="{{ route('edit_report', $session->id) }}">Editer le compte-rendu</a></li>
+                                    @endif
                             </ul>
                         </li>
                     @endforeach
