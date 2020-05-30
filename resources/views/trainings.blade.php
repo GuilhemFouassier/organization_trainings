@@ -5,8 +5,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Les Formations:</div>
-                <a href="{{ route('add_training') }}">Créer une formation</a>
                 <div class="card-body">
+                    <a href="{{ route('add_training') }}">Créer une formation</a>
                     <ul>
                     @foreach ($trainings as $training)
                         @if (Auth::user()->role == "teacher" && $training->teacher_id == Auth::user()->id)
