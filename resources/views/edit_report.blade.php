@@ -16,7 +16,6 @@
                     {!! Form::model($report, ['route' => ['update_report', $session->id]]) !!}
                         Nom :{!! Form::text('name') !!}<br>
                         Description :{!! Form::text('content') !!}<br>
-                        Professeur : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
                         {!! Form::submit('Update Report') !!}
                     {!! Form::close() !!}
                     <a href="{{ route('delete_report', $session->id) }}">Supprimer le compte-rendu</a>

@@ -21,18 +21,6 @@ class TeacherController extends Controller
     }
 
     /**
-     * Show the dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        $sessions = Session::all()->get();
-        $users = User::where('role', 'teacher')->get();
-        return view('add_report', ['sessions'=>$sessions], ['users'=>$users]);
-    }
-
-    /**
      * Add report.
      *
      * @return \Illuminate\Contracts\Support\Renderable
