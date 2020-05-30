@@ -4,6 +4,7 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
+        <div class="card-header">Mes sessions à venir :</div>
             <div class="card-body">
                 <ul>
                 @if (Auth::user()->role == "user")
@@ -11,39 +12,30 @@
                         @foreach( Auth::user()->grades as $grade )
                             @if($grade->session_id == $session ->id)
                                 @if ($session->date > Carbon\Carbon::now())
-                                        <br>
-                                        <p>Mes sessions à venir:</p>
+                                <li> {{$session->name}} </li>    
                                         <ul>
-                                            <li> {{$session->name}} </li>
-                                            <li> {{$session->date}} </li>
-                                            <li> {{$session->availables_seats}} </li>
-                                            <li> {{$session->configuration}} </li>
-                                            <li> {{$session->room->name}} </li>
-                                            <li> Professeur : {{$session->report->user->name}} </li>
-                                            @if($session->report === null)
-                                                <li><a href="">Créer un compte-rendu</a> </li>
-                                            @else
-                                                <li><a href="{{ route('report', $session->id) }}">Voir le compte-rendu</a></li>
-                                            @endif
-                                            @if (Auth::user()->role == "user")
-                                                @if ($session->grades->isNotEmpty() & Auth::user()->grades->isNotEmpty())
-                                                    @foreach( Auth::user()->grades as $grade )
-                                                        @if($grade->session_id == $session ->id)
-                                                            <li>Vous êtes déjà inscrit </li>
-                                                        @endif
-                                                    @endforeach
-                                                @else
-                                                    @if ($session->availables_seats > 0)
-                                                        <li> <a href="{{route('registration', $session->id) }}"> Inscription </a> </li>
-                                                    @else
-                                                        <li>Il n'y a plus de place</li>
-                                                    @endif
-                                                @endif
-                                            @endif
+                                            <li>Date : {{$session->date}} </li>
+                                            <li>Place restante : {{$session->availables_seats}} </li>
+                                            <li>Salle : {{$session->room->name}} </li>
+                                            <li>Professeur : {{$session->report->user->name}} </li>
                                         </ul>
                                 @endif
                             @endif
                         @endforeach
+                    @endforeach
+                @elseif (Auth::user()->role == "teacher")
+                    @foreach ($sessions as $session)
+                            @if($session->report->teacher_id == Auth::user()->id)
+                                @if ($session->date > Carbon\Carbon::now())
+                                <li> {{$session->name}} </li>    
+                                        <ul>
+                                            <li>Date : {{$session->date}} </li>
+                                            <li>Places restantes : {{$session->availables_seats}} </li>
+                                            <li>Salle : {{$session->room->name}} </li>
+                                            <li>Professeur : {{$session->report->user->name}} ( vous-même ) </li>
+                                        </ul>
+                                @endif
+                            @endif
                     @endforeach
                 @endif
                 </ul>
