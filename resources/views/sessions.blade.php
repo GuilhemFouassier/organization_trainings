@@ -19,10 +19,10 @@
                             <li><a href="{{ route('edit_session', $session->id) }}">Editer la session</a></li>
                             @if($session->report->content == null & $session->report->name == null)
                                 @if(Auth::user()->role == "teacher")
-                                    <li><a href="{{ route('add_report', $session->id) }}">Créer un compte-rendu</a> </li>
+                                    <li><a href="{{ route('add_report', $session->report->id) }}">Créer un compte-rendu</a> </li>
                                 @endif
                             @else
-                                <li><a href="{{ route('reports', $session->id) }}">Voir le compte-rendu</a></li>
+                                <li><a href="{{ route('report', $session->report->id) }}">Voir le compte-rendu</a></li>
                             @endif
                             @if (Auth::user()->role == "user")
                                 @if ($session->grades->isNotEmpty() & Auth::user()->grades->isNotEmpty())

@@ -37,7 +37,7 @@ Route::get('/sessions/{id}', 'SessionController@index')->name('sessions');
 Route::get('/add_session/{id}', 'AdminController@add_session')->name('add_session');
 Route::post('/create_session/{id}', 'AdminController@create_session')->name('create_session');
 Route::get('/edit_session/{id}', 'AdminController@edit_session')->name('edit_session');
-Route::get('/reports/{id}', 'ReportController@index')->name('reports');
+Route::get('/report/{id}', 'ReportController@index')->name('report');
 Route::get('/add_report/{id}', 'TeacherController@add_report')->name('add_report');
 Route::post('/create_report/{id}', 'TeacherController@create_report')->name('create_report');
 Route::get('/edit_report/{id}', 'TeacherController@edit_report')->name('edit_report');

@@ -25,11 +25,10 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function add_report($id, Request $request)
+    public function add_report($id)
     {
-        $session = Session::find($id);
-        $users = User::where('role', 'teacher')->get();
-        return view('add_report', ['session'=>$session], ['users'=>$users]);
+        $report = Report::find($id);
+        return view('add_report', ['report'=>$report]);
     }
 
     /**
@@ -39,11 +38,9 @@ class TeacherController extends Controller
      */
     public function create_report($id, Request $request)
     {
-        $report = new Report;
+        $report = Report::find($id);
         $report->name = $request->name;
         $report->content = $request->content;
-        $report->session_id = $id;
-        $report->teacher_id = $request->teacher_id;
         $report->save();
 
         return redirect()->action('ReportController@index', ['id'=>$id]);
@@ -54,12 +51,10 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function edit_report($id, Request $request)
+    public function edit_report($id)
     {
-        $session = Session::find($id);
-        $report = Report::where('session_id', $id)->first();
-        $users = User::where('role', 'teacher')->first();
-        return view('edit_report')->with(compact('report', 'session', 'users'));
+        $report = Report::find($id);
+        return view('edit_report', ['report'=>$report]);
     }
 
     /**
@@ -69,13 +64,10 @@ class TeacherController extends Controller
      */
     public function update_report($id, Request $request)
     {
-        $report = Report::where('session_id', $id)->first();
+        $report = Report::find($id);
         $report->name = $request->name;
         $report->content = $request->content;
-        $report->session_id = $id;
-        $report->teacher_id = $request->teacher_id;
         $report->save();
-
         return redirect()->action('ReportController@index', ['id'=>$id]);
     }
 
@@ -86,8 +78,10 @@ class TeacherController extends Controller
      */
     public function delete_report($id)
     {
-        $report = Report::where('session_id', $id)->first();
-        $report->forceDelete();
-        return redirect()->action('ReportController@index', ['id'=>$id]);
+        $report = Report::find($id);
+        $report->name = null;
+        $report->content = null;
+        $report->save();
+        return redirect()->action('SessionController@index', ['id'=>$report->session->training_id]);
     }
 }

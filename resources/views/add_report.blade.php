@@ -14,9 +14,9 @@
                         </div>
                     @endif
 
-                    {!! Form::open(['url' => ["create_report", $session->id]]) !!}
+                    {!! Form::open(['url' => ["create_report", $report->id]]) !!}
                         Nom :{!! Form::text('name') !!}<br>
-                        Description :{!! Form::text('content') !!}<br>
+                        Description :{!! Form::textarea('content') !!}<br>
                         {!! Form::submit('Add report') !!}
                     {!! Form::close() !!}
                 </div>
