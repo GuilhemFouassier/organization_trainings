@@ -6,7 +6,9 @@
             <div class="card">
                 <div class="card-header">Les Formations:</div>
                 <div class="card-body">
+                    @if (Auth::user()->role == "adm")
                     <a href="{{ route('add_training') }}">Créer une formation</a>
+                    @endif
                     <ul>
                     @foreach ($trainings as $training)
                         @if (Auth::user()->role == "teacher" && $training->teacher_id == Auth::user()->id)
