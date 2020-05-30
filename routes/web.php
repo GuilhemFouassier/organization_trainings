@@ -39,7 +39,6 @@ Route::post('/create_session/{id}', 'AdminController@create_session')->name('cre
 Route::get('/edit_session/{id}', 'AdminController@edit_session')->name('edit_session');
 Route::post('/update_session/{id}', 'AdminController@update_session')->name('update_session');
 Route::get('/delete_session/{id}', 'AdminController@delete_session')->name('delete_session');
-Route::get('/all_sessions', 'SessionController@all_sessions')->name('all_sessions');
 Route::get('/passed_sessions', 'SessionController@passed_sessions')->name('passed_sessions');
 Route::get('/sessions_to_come', 'SessionController@sessions_to_come')->name('sessions_to_come');
 Route::get('/report/{id}', 'ReportController@index')->name('report');

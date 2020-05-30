@@ -22,17 +22,6 @@ class SessionController extends Controller
     }
 
     /**
-     * View all sessions of a training.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function all_sessions()
-    {
-        $sessions = Session::all();
-        return view('all_sessions', ['sessions'=>$sessions]);
-    }
-
-    /**
      * View all passed sessions of a training.
      *
      * @return \Illuminate\Contracts\Support\Renderable
