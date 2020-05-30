@@ -17,8 +17,7 @@ class ReportController extends Controller
      */
     public function index($id)
     {
-        $session = Session::find($id);
-        $reports = Report::where('session_id', '=', $id)->get();
-        return view('reports', ['session'=>$session], ['reports'=>$reports]);
+        $report = Report::find($id);
+        return view('report', ['report'=>$report]);
     }
 }

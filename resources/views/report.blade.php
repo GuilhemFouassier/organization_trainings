@@ -4,15 +4,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Compte-rendu de la session {{$session->name}}:</div>
+                <div class="card-header">Compte-rendu de la session {{$report->session->name}}:</div>
                 <div class="card-body">
-                    @foreach ($reports as $report)
+                    <ul>
                         <li> {{$report->name}}
                             <ul>
                                 <li> {{$report->content}} </li>
                             </ul>
                         </li>
-                    @endforeach
+                    </ul>
+                    @if(Auth::user()->role == "teacher")
+                        <div><a href="{{ route('edit_report', $report->id) }}">Editer le compte-rendu</a></div>
+                    @endif
                 </div>
             </div>
         </div>
