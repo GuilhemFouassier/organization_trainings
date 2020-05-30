@@ -40,6 +40,8 @@ Route::get('/edit_session/{id}', 'AdminController@edit_session')->name('edit_ses
 Route::post('/update_session/{id}', 'AdminController@update_session')->name('update_session');
 Route::get('/delete_session/{id}', 'AdminController@delete_session')->name('delete_session');
 Route::get('/all_sessions', 'SessionController@all_sessions')->name('all_sessions');
+Route::get('/passed_sessions', 'SessionController@passed_sessions')->name('passed_sessions');
+Route::get('/sessions_to_come', 'SessionController@sessions_to_come')->name('sessions_to_come');
 Route::get('/report/{id}', 'ReportController@index')->name('report');
 Route::get('/add_report/{id}', 'TeacherController@add_report')->name('add_report');
 Route::post('/create_report/{id}', 'TeacherController@create_report')->name('create_report');

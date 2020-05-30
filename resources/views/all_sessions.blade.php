@@ -45,9 +45,9 @@
                     @foreach ($sessions as $session)
                         @foreach( Auth::user()->grades as $grade )
                             @if($grade->session_id == $session ->id)
-                                @if ($session->date > Carbon\Carbon::now())
+                                <!-- @if ($session->date > Carbon\Carbon::now())
                                         <br>
-                                        <p>Mes sessions à venir:</p>
+                                        <p>Mes sessions à venir:</p> -->
                                         <ul>
                                             <li> {{$session->name}} </li>
                                             <li> {{$session->date}} </li>
@@ -76,8 +76,8 @@
                                                 @endif
                                             @endif
                                         </ul>
-                                @endif
-                                @if ($session->date < Carbon\Carbon::now())
+                                <!-- @endif -->
+                                <!-- @if ($session->date < Carbon\Carbon::now())
                                     <p>Mes sessions passées:</p>
                                     <ul>
                                         <li> {{$session->name}} </li>
@@ -107,7 +107,7 @@
                                             @endif
                                         @endif
                                     </ul>
-                                @endif
+                                @endif -->
                             @endif
                         @endforeach
                     @endforeach

@@ -38,7 +38,7 @@
                     @elseif (Auth::user()->role == "user")
                     Employee
                     <div class="alert alert-success" role="alert">
-                        <a href="{{ url('/trainings') }}">Les Formations</a> - <a href="{{ url('/all_sessions') }}">Mes sessions</a>
+                        <a href="{{ url('/trainings') }}">Les Formations</a> - <a href="{{ url('/all_sessions') }}">Toutes mes sessions</a> - <a href="{{ url('/passed_sessions') }}">Mes sessions passées</a> - <a href="{{ url('/sessions_to_come') }}">Mes sessions à venir</a>
                         </div>
                     @endif
                 </div>

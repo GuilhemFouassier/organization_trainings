@@ -31,4 +31,26 @@ class SessionController extends Controller
         $sessions = Session::all();
         return view('all_sessions', ['sessions'=>$sessions]);
     }
+
+    /**
+     * View all passed sessions of a training.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function passed_sessions()
+    {
+        $sessions = Session::all();
+        return view('passed_sessions', ['sessions'=>$sessions]);
+    }
+
+    /**
+     * View all sessions to come of a training.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function sessions_to_come()
+    {
+        $sessions = Session::all();
+        return view('sessions_to_come', ['sessions'=>$sessions]);
+    }
 }
