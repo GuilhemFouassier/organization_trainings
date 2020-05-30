@@ -17,7 +17,6 @@
                     {!! Form::open(['url' => ["create_report", $session->id]]) !!}
                         Nom :{!! Form::text('name') !!}<br>
                         Description :{!! Form::text('content') !!}<br>
-                        Professeur : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
                         {!! Form::submit('Add report') !!}
                     {!! Form::close() !!}
                 </div>
