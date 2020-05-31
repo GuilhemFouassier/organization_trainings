@@ -191,7 +191,6 @@ class AdminController extends Controller
         $session = new Session;
         $session->name = $request->name;
         $session->date = $request->date;
-        $session->availables_seats = $request->availables_seats;
         $session->configuration = $request->configuration;
         $session->room_id = $request->room_id;
         $session->training_id = $id;
@@ -226,7 +225,6 @@ class AdminController extends Controller
         $session = Session::find($id);
         $session->name = $request->name;
         $session->date = $request->date;
-        $session->availables_seats = $request->availables_seats;
         $session->configuration = $request->configuration;
         $session->room_id = $request->room_id;
         $session->save();
