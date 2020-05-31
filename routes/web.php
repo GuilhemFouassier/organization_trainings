@@ -52,3 +52,8 @@ Route::post('/update_report/{id}', 'TeacherController@update_report')->name('upd
 Route::get('/delete_report/{id}', 'TeacherController@delete_report')->name('delete_report');
 
 Route::get('/registration/{id}', 'UserController@registration')->name('registration');
+Route::get('/add_grade/{id}', 'TeacherController@add_grade')->name('add_grade');
+Route::post('/create_grade/{id}', 'TeacherController@create_grade')->name('create_grade');
+Route::get('/edit_grade/{id}', 'TeacherController@edit_grade')->name('edit_grade');
+Route::post('/update_grade/{id}', 'TeacherController@update_grade')->name('update_grade');
+Route::get('/delete_grade/{id}', 'TeacherController@delete_grade')->name('delete_grade');
