@@ -28,7 +28,7 @@ class SessionController extends Controller
      */
     public function passed_sessions()
     {
-        $sessions = Session::all();
+        $sessions = Session::with('report.user', 'grades.user')->get();
         return view('passed_sessions', ['sessions'=>$sessions]);
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Session;
 use App\User;
 use App\Report;
+use App\Grade;
 
 class TeacherController extends Controller
 {
@@ -84,4 +85,68 @@ class TeacherController extends Controller
         $report->save();
         return redirect()->action('SessionController@index', ['id'=>$report->session->training_id]);
     }
+
+    /**
+     * Add grade to a user.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function add_grade($id)
+    {
+        $grade = Grade::with('session.grades', 'user.grades')->where(array('id'=>$id))->get();
+        return view('add_grade', ['grade'=>$grade]);
+    }
+
+    /**
+     * Create Report in database.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function create_grade($id, Request $request)
+    {
+        $grade = Grade::find($id);
+        $grade->value = $request->value;
+        $grade->save();
+
+        return redirect()->action('SessionController@passed_sessions');
+    }
+
+    /**
+     * Add grade to a user.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function edit_grade($id)
+    {
+        $grade = Grade::with('session.grades', 'user.grades')->where(array('id'=>$id))->get();
+        return view('edit_grade', ['grade'=>$grade]);
+    }
+
+    /**
+     * Create Report in database.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function update_grade($id, Request $request)
+    {
+        $grade = Grade::find($id);
+        $grade->value = $request->value;
+        $grade->save();
+
+        return redirect()->action('SessionController@passed_sessions');
+    }
+
+    /**
+     * Delete Report in database.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function delete_grade($id)
+    {
+        $grade = Grade::find($id);
+        $grade->value = null;
+        $grade->save();
+        return redirect()->action('SessionController@passed_sessions');
+    }
+
 }
