@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Update a User</div>
+                <div class="card-header">Update a user</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,15 +15,15 @@
                     @endif
 
                     {!! Form::model($user, ['route' => ['update_user', $user->id]]) !!}
-                        nom :{!! Form::text('name') !!}<br>
-                        date de Naissance :{!! Form::date('date_of_birth') !!}<br>
-                        gender :{!! Form::select('gender', ['male' => 'Masculin', 'female' => 'Feminin', 'other'=>'Autre']) !!}<br>
-                        job :{!! Form::text('job') !!}<br>
-                        email: {!! Form::email('email') !!}<br>
-                        role :{!! Form::select('role', ['adm' => 'Admin', 'prof' => 'Professeur', 'user'=>'Salarié']) !!}<br>
-                        {!! Form::submit('Edit user') !!}
+                        Name :{!! Form::text('name') !!}<br>
+                        Birth date :{!! Form::date('date_of_birth') !!}<br>
+                        Genre :{!! Form::select('gender', ['male' => 'Male', 'female' => 'Female', 'other'=>'Other']) !!}<br>
+                        Job :{!! Form::text('job') !!}<br>
+                        Email: {!! Form::email('email') !!}<br>
+                        Role :{!! Form::select('role', ['adm' => 'Admin', 'prof' => 'Teacher', 'user'=>'Employee']) !!}<br>
+                        {!! Form::submit('Edit a user') !!}
                     {!! Form::close() !!}
-                    <a href="{{ route('delete_user', $user->id) }}">Supprimer l'utilisateur</a>
+                    <a href="{{ route('delete_user', $user->id) }}">Delete the user</a>
                 </div>
             </div>
         </div>

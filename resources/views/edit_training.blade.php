@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Add a Training</div>
+                <div class="card-header">Edit a training</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,12 +15,12 @@
                     @endif
 
                     {!! Form::model($training, ['route' => ['update_training', $training->id]]) !!}
-                        nom :{!! Form::text('name') !!}<br>
-                        Durée :{!! Form::time('duration') !!}<br>
-                        Professeur : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
-                        {!! Form::submit('Update Training') !!}
+                        Name :{!! Form::text('name') !!}<br>
+                        Duration :{!! Form::time('duration') !!}<br>
+                        Teacher : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
+                        {!! Form::submit('Update the training') !!}
                     {!! Form::close() !!}
-                    <a href="{{ route('delete_training', $training->id) }}">Supprimer la Formation</a>
+                    <a href="{{ route('delete_training', $training->id) }}">Delete the training</a>
                 </div>
             </div>
         </div>

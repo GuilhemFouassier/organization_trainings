@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Editer le compte-rendu de la session {{$report->session->name}}</div>
+                <div class="card-header">Edit {{$report->session->name}}'s report</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,11 +14,11 @@
                         </div>
                     @endif
                     {!! Form::model($report, ['route' => ['update_report', $report->id]]) !!}
-                        Nom :{!! Form::text('name') !!}<br>
+                        Name :{!! Form::text('name') !!}<br>
                         Description :<br>{!! Form::textarea('content') !!}<br>
-                        {!! Form::submit('Update Report') !!}
+                        {!! Form::submit('Update the report') !!}
                     {!! Form::close() !!}
-                    <a href="{{ route('delete_report', $report->id) }}">Supprimer le compte-rendu</a>
+                    <a href="{{ route('delete_report', $report->id) }}">Delete the report</a>
                 </div>
             </div>
         </div>

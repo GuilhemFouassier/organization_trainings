@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Editer la session {{$session->name}}</div>
+                <div class="card-header">Edit session {{$session->name}}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,14 +15,15 @@
                     @endif
 
                     {!! Form::model($session, ['route' => ['update_session', $session->id]]) !!}
-                        nom :{!! Form::text('name') !!}<br>
+                        Name :{!! Form::text('name') !!}<br>
                         Date :{!! Form::date('date') !!}<br>
-                        Configuration :{!! Form::select('configuration', ['0' => 'Non', '1' => 'Oui']) !!}<br>
-                        Salle : {!! Form::select('room_id', $rooms->pluck('name', 'id')) !!}<br>
-                        Professeur : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
-                        {!! Form::submit('Update Session') !!}
+                        Available seats :{!! Form::text('availables_seats') !!}<br>
+                        Configuration :{!! Form::select('configuration', ['0' => 'No', '1' => 'Yes']) !!}<br>
+                        Room : {!! Form::select('room_id', $rooms->pluck('name', 'id')) !!}<br>
+                        Teacher : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
+                        {!! Form::submit('Update the session') !!}
                     {!! Form::close() !!}
-                    <a href="{{ route('delete_session', $session->id) }}">Supprimer la session</a>
+                    <a href="{{ route('delete_session', $session->id) }}">Delete the session</a>
                 </div>
             </div>
         </div>
