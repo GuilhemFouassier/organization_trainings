@@ -28,7 +28,7 @@ class SessionController extends Controller
      */
     public function passed_sessions()
     {
-        $sessions = Session::with('report.user', 'grades.user')->get();
+        $sessions = Session::with('report.user', 'grades.user', 'training')->get();
         return view('passed_sessions', ['sessions'=>$sessions]);
     }
 
@@ -39,7 +39,7 @@ class SessionController extends Controller
      */
     public function sessions_to_come()
     {
-        $sessions = Session::all();
+        $sessions = Session::with('training')->get();
         return view('sessions_to_come', ['sessions'=>$sessions]);
     }
 }
