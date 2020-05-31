@@ -12,7 +12,7 @@
                         @foreach( Auth::user()->grades as $grade )
                             @if($grade->session_id == $session ->id)
                                 @if ($session->date > Carbon\Carbon::now())
-                                <li> {{$session->name}} </li>    
+                                <li> {{$session->name}} ( {{$session->training->name}} )</li>    
                                         <ul>
                                             <li>Date : {{$session->date}} </li>
                                             <li>Place restante : {{$session->availables_seats}} </li>
@@ -27,7 +27,7 @@
                     @foreach ($sessions as $session)
                             @if($session->report->teacher_id == Auth::user()->id)
                                 @if ($session->date > Carbon\Carbon::now())
-                                <li> {{$session->name}} </li>    
+                                <li> {{$session->name}} ( {{$session->training->name}} )</li>    
                                         <ul>
                                             <li>Date : {{$session->date}} </li>
                                             <li>Places restantes : {{$session->availables_seats}} </li>
