@@ -10933,3 +10933,78 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background-color: #000000;
+}
+
+.card-header {
+  text-transform: uppercase;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+/* Custom forms*/
+
+form input[type=button].btn-block {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+form input[type=text],
+form input[type=date],
+form input[type=email],
+form select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+form input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+form div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Custom links card */
+
+.card a:link,
+.card a:visited,
+button[type=submit] {
+  background-color: #000000;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.card a:hover,
+.card a:active {
+  background-color: red;
+}
+
