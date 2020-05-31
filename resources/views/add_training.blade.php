@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Add a Training</div>
+                <div class="card-header">Add a new training</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,10 +15,10 @@
                     @endif
 
                     {!! Form::open(['url' => "create_training"]) !!}
-                        nom :{!! Form::text('name') !!}<br>
-                        Durée :{!! Form::time('duration') !!}<br>
-                        Professeur : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
-                        {!! Form::submit('Add Training') !!}
+                        Name :{!! Form::text('name') !!}<br>
+                        Duration :{!! Form::time('duration') !!}<br>
+                        Teacher : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
+                        {!! Form::submit('Add a training') !!}
                     {!! Form::close() !!}
                 </div>
             </div>

@@ -4,10 +4,10 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">Les Sessions de la formation {{$training->name}}:</div>
+            <div class="card-header">{{$training->name}}'s sessions</div>
             <div class="card-body">
                 @if (Auth::user()->role == "adm")
-                    <a href="{{ route('add_session', $training->id) }}">Ajouter une nouvelle session</a>
+                    <a href="{{ route('add_session', $training->id) }}">Add a new session</a>
                 @endif
                 <ul>
                     @if (Auth::user()->role == "adm" || Auth::user()->role == "teacher")
@@ -15,17 +15,17 @@
                         <li> {{$session->name}}
                             <ul>
                                 <li>Date: {{$session->date}} </li>
-                                <li>Salle : {{$session->room->name}} </li>
-                                <li>Professeur : {{$session->report->user->name}} </li>
+                                <li>Room : {{$session->room->name}} </li>
+                                <li>Teacher : {{$session->report->user->name}} </li>
                                 @if (Auth::user()->role == "adm")
-                                <li><a href="{{ route('edit_session', $session->id) }}">Editer la session</a></li>
+                                <li><a href="{{ route('edit_session', $session->id) }}">Edit the session</a></li>
                                 @endif
                                 @if($session->report->content == null & $session->report->name == null)
                                     @if(Auth::user()->role == "teacher")
-                                        <li><a href="{{ route('add_report', $session->report->id) }}">Créer un compte-rendu</a> </li>
+                                        <li><a href="{{ route('add_report', $session->report->id) }}">Create a report</a> </li>
                                     @endif
                                 @else
-                                    <li><a href="{{ route('report', $session->report->id) }}">Voir le compte-rendu</a></li>
+                                    <li><a href="{{ route('report', $session->report->id) }}">See the report</a></li>
                                 @endif
                             </ul>
                         </li>
@@ -36,17 +36,17 @@
                                 <li> {{$session->name}}
                                     <ul>
                                         <li>Date : {{$session->date}} </li>
-                                        <li>Salle : {{$session->room->name}} </li>
-                                        <li>Professeur : {{$session->report->user->name}} </li>
+                                        <li>Room : {{$session->room->name}} </li>
+                                        <li>Teacher : {{$session->report->user->name}} </li>
                                         @if (Auth::user()->role == "adm")
-                                        <li><a href="{{ route('edit_session', $session->id) }}">Editer la session</a></li>
+                                        <li><a href="{{ route('edit_session', $session->id) }}">Edit the session</a></li>
                                         @endif
                                         @if($session->report->content == null & $session->report->name == null)
                                             @if(Auth::user()->role == "teacher")
-                                                <li><a href="{{ route('add_report', $session->report->id) }}" class="btn btn-outline-secondary btn-sm">Créer un compte-rendu</a> </li>
+                                                <li><a href="{{ route('add_report', $session->report->id) }}" class="btn btn-outline-secondary btn-sm">Create a report</a> </li>
                                             @endif
                                         @else
-                                            <li><a href="{{ route('report', $session->report->id) }}" class="btn btn-outline-secondary btn-sm">Voir le compte-rendu</a></li>
+                                            <li><a href="{{ route('report', $session->report->id) }}" class="btn btn-outline-secondary btn-sm">See the report</a></li>
                                         @endif
                                         @if (Auth::user()->role == "user" & $session->grades->isNotEmpty())
                                             @php( $existance = 0 )
@@ -56,19 +56,19 @@
                                                 @endif
                                             @endfor
                                             @if( $existance === 1 )
-                                                <li>{{$session->availables_seats}} places restantes : Vous êtes déjà inscrits</li>
+                                                <li>{{$session->availables_seats}} available seats : You are already subscribed</li>
                                             @else
                                                 @if ($session->availables_seats > 0)
-                                                    <li>{{$session->availables_seats}} places restantes : <a href="{{route('registration', $session->id) }}" class="btn btn-outline-info btn-sm"> Inscription </a> </li>
+                                                    <li>{{$session->availables_seats}} available seats : <a href="{{route('registration', $session->id) }}" class="btn btn-outline-info btn-sm"> Subscribe </a> </li>
                                                 @else
-                                                    <li>{{$session->availables_seats}} place restante : Vous ne pouvez plus vous inscrire</li>
+                                                    <li>{{$session->availables_seats}} available seats : You can't subscribe</li>
                                                 @endif
                                             @endif
                                         @elseif ( Auth::user()->role == "user" )
                                                 @if ($session->availables_seats > 0)
-                                                    <li>{{$session->availables_seats}} places restantes :  <a href="{{route('registration', $session->id) }}"  class="btn btn-outline-info btn-sm"> Inscription </a> </li>
+                                                    <li>{{$session->availables_seats}} available seats :  <a href="{{route('registration', $session->id) }}"  class="btn btn-outline-info btn-sm"> Subscribe </a> </li>
                                                 @else
-                                                    <li>{{$session->availables_seats}} place restante : Vous ne pouvez plus vous inscrire</li>
+                                                    <li>{{$session->availables_seats}} available seats : You can't subscribe</li>
                                                 @endif
                                         @endif
                                     </ul>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Add a User</div>
+                <div class="card-header">Add a new user</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,14 +15,14 @@
                     @endif
 
                     {!! Form::open(['url' => "create_user"]) !!}
-                        nom :{!! Form::text('name') !!}<br>
-                        date de Naissance :{!! Form::date('date_of_birth') !!}<br>
-                        gender :{!! Form::select('gender', ['male' => 'Masculin', 'female' => 'Feminin', 'other'=>'Autre']) !!}<br>
-                        job :{!! Form::text('job') !!}<br>
-                        email: {!! Form::email('email') !!}<br>
-                        role :{!! Form::select('role', ['adm' => 'Admin', 'teacher' => 'Professeur', 'user'=>'Salarié']) !!}<br>
-                        password :{!! Form::password('password') !!}<br>
-                        {!! Form::submit('Add user') !!}
+                        Name :{!! Form::text('name') !!}<br>
+                        Birth date :{!! Form::date('date_of_birth') !!}<br>
+                        Gender :{!! Form::select('gender', ['male' => 'Male', 'female' => 'Female', 'other'=>'Other']) !!}<br>
+                        Job :{!! Form::text('job') !!}<br>
+                        Email: {!! Form::email('email') !!}<br>
+                        Role :{!! Form::select('role', ['adm' => 'Admin', 'teacher' => 'Teacher', 'user'=>'Employee']) !!}<br>
+                        Password :{!! Form::password('password') !!}<br>
+                        {!! Form::submit('Add a user') !!}
                     {!! Form::close() !!}
                 </div>
             </div>

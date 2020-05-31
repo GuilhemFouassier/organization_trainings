@@ -4,7 +4,7 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-        <div class="card-header">Mes sessions passées:</div>
+        <div class="card-header">My passed sessions :</div>
             <div class="card-body">
                 <ul>
                 @if (Auth::user()->role == "user")
@@ -15,16 +15,16 @@
                                     <li> {{$session->name}} ( {{$session->training->name}} )</li>
                                     <ul>
                                         <li>Date : {{$session->date}} </li>
-                                        <li>Nombre de places restantes : {{$session->availables_seats}} </li>
-                                        <li>Salle : {{$session->room->name}} </li>
-                                        <li>Professeur : {{$session->report->user->name}} </li>
+                                        <li>Number of remaining seats : {{$session->availables_seats}} </li>
+                                        <li>Room : {{$session->room->name}} </li>
+                                        <li>Teacher : {{$session->report->user->name}} </li>
                                         @if($session->report->content != null & $session->report->name != null)
-                                            <li><a href="{{ route('report', $session->id) }}" class="btn btn-outline-secondary btn-sm">Voir le compte-rendu</a></li>
+                                            <li><a href="{{ route('report', $session->id) }}" class="btn btn-outline-secondary btn-sm">See the report</a></li>
                                         @endif
                                         @if($grade->value == null)
-                                            <li>Vous n'avez pas de note</li>
+                                            <li>You have no grades</li>
                                         @else
-                                            <li>Votre note : {{ $grade->value }} / 20</li>
+                                            <li>Your grade : {{ $grade->value }} / 20</li>
                                         @endif
                                     </ul>
                                 @endif
@@ -38,24 +38,24 @@
                                     <li> {{$session->name}} ( {{$session->training->name}} )</li>
                                     <ul>
                                         <li>Date : {{$session->date}} </li>
-                                        <li>Nombre de places restantes : {{$session->availables_seats}} </li>
-                                        <li>Salle : {{$session->room->name}} </li>
-                                        <li>Professeur : {{$session->report->user->name}} </li>
+                                        <li>Number of remaining seats : {{$session->availables_seats}} </li>
+                                        <li>Room : {{$session->room->name}} </li>
+                                        <li>Teacher : {{$session->report->user->name}} </li>
                                         @if($session->report->content == null & $session->report->name == null)
-                                            <li><a href="" class="btn btn-outline-info btn-sm">Créer un compte-rendu</a> </li>
+                                            <li><a href="{{ route('add_report', $session->report->id) }}" class="btn btn-outline-info btn-sm">Create a report</a> </li>
                                         @else
-                                            <li><a href="{{ route('report', $session->id) }}" class="btn btn-outline-info btn-sm">Voir le compte-rendu</a></li>
+                                            <li><a href="{{ route('report', $session->id) }}" class="btn btn-outline-info btn-sm">See the report</a></li>
                                         @endif
                                         @if($session->grades->isNotEmpty())
                                             <li>
-                                                Les personnes inscrites : 
+                                                Subscribed persons : 
                                                 <ul>
                                                 @foreach ($session->grades as $grade)
                                                     <li>{{ $grade->user->name }} 
                                                         @if( $grade->value == null )
-                                                            <a href="{{ route('add_grade', $grade->id) }}" class="btn btn-outline-secondary btn-sm">Mettre une note</a>
+                                                            <a href="{{ route('add_grade', $grade->id) }}" class="btn btn-outline-secondary btn-sm">Give a grade</a>
                                                         @else
-                                                            : {{$grade->value}} / 20 <a href="{{ route('edit_grade', $grade->id) }}" class="btn btn-outline-secondary btn-sm">Editer cette note</a>
+                                                            : {{$grade->value}} / 20 <a href="{{ route('edit_grade', $grade->id) }}" class="btn btn-outline-secondary btn-sm">Edit this grade</a>
                                                         @endif
                                                     </li>
                                                 @endforeach

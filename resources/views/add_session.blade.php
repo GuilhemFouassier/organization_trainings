@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Ajouter une nouvelle session:</div>
+                <div class="card-header">Add a new session:</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,12 +15,13 @@
                     @endif
 
                     {!! Form::open(['url' => ["create_session", $training->id]]) !!}
-                        Nom :{!! Form::text('name') !!}<br>
+                        Name :{!! Form::text('name') !!}<br>
                         Date :{!! Form::date('date') !!}<br>
-                        Configuration :{!! Form::select('configuration', ['0' => 'Non', '1' => 'Oui']) !!}<br>
-                        Salle : {!! Form::select('room_id', $rooms->pluck('name', 'id')) !!}<br>
-                        Professeur : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
-                        {!! Form::submit('Add Session') !!}
+                        Available seats :{!! Form::text('availables_seats') !!}<br>
+                        Configuration :{!! Form::select('configuration', ['0' => 'No', '1' => 'Yes']) !!}<br>
+                        Room : {!! Form::select('room_id', $rooms->pluck('name', 'id')) !!}<br>
+                        Teacher : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
+                        {!! Form::submit('Add a session') !!}
                     {!! Form::close() !!}
                 </div>
             </div>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Ajouter un nouveau compte-rendu :</div>
+                <div class="card-header">Add a new report :</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,9 +15,9 @@
                     @endif
 
                     {!! Form::open(['url' => ["create_report", $report->id]]) !!}
-                        Nom :{!! Form::text('name') !!}<br>
+                        Name :{!! Form::text('name') !!}<br>
                         Description :{!! Form::textarea('content') !!}<br>
-                        {!! Form::submit('Add report') !!}
+                        {!! Form::submit('Add a report') !!}
                     {!! Form::close() !!}
                 </div>
             </div>
