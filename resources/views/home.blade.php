@@ -22,26 +22,31 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Vous êtes:</div>
-
-                <div class="card-body">
-                    @if (Auth::user()->role == "adm")
-                    Admin
-                        <div class="alert" role="alert">
-                            <a href="{{ url('/users') }}">Les utilisateurs</a> - <a href="{{ url('/trainings') }}">Les Formations</a>
+                @if (Auth::user()->role == "adm")
+                    <div class="card-header">Vous êtes: Admin</div>
+                        <div class="card-body">
+                            <div class="alert" role="alert">
+                                <a href="{{ url('/users') }}">Les utilisateurs</a> - <a href="{{ url('/trainings') }}">Les Formations</a>
+                            </div>
                         </div>
+                    </div>
                     @elseif (Auth::user()->role == "teacher")
-                    Teacher
-                        <div class="alert alert-success" role="alert">
-                            <a href="{{ url('/trainings') }}">Les Formations dont je suis responsables</a> - <a href="{{ url('/passed_sessions') }}">Mes sessions passées</a> - <a href="{{ url('/sessions_to_come') }}">Mes sessions à venir</a>
+                    <div class="card-header">Vous êtes: Teacher</div>
+                        <div class="card-body">
+                            <div class="alert" role="alert">
+                                <a href="{{ url('/trainings') }}">Les Formations dont je suis responsables</a> - <a href="{{ url('/passed_sessions') }}">Mes sessions passées</a> - <a href="{{ url('/sessions_to_come') }}">Mes sessions à venir</a>
+                            </div>
                         </div>
+                    </div>
                     @elseif (Auth::user()->role == "user")
-                    Employee
-                    <div class="alert alert-success" role="alert">
-                        <a href="{{ url('/trainings') }}">Les Formations</a> - <a href="{{ url('/passed_sessions') }}">Mes sessions passées</a> - <a href="{{ url('/sessions_to_come') }}">Mes sessions à venir</a>
+                    <div class="card-header">Vous êtes: Employee</div>
+                        <div class="card-body">
+                            <div class="alert" role="alert">
+                                <a href="{{ url('/trainings') }}">Les Formations</a> - <a href="{{ url('/passed_sessions') }}">Mes sessions passées</a> - <a href="{{ url('/sessions_to_come') }}">Mes sessions à venir</a>
+                            </div>
                         </div>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

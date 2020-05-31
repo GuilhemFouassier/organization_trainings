@@ -19,7 +19,12 @@
                                         <li>Salle : {{$session->room->name}} </li>
                                         <li>Professeur : {{$session->report->user->name}} </li>
                                         @if($session->report->content != null & $session->report->name != null)
-                                            <li><a href="{{ route('report', $session->id) }}">Voir le compte-rendu</a></li>
+                                            <li><a href="{{ route('report', $session->id) }}" class="btn btn-outline-secondary btn-sm">Voir le compte-rendu</a></li>
+                                        @endif
+                                        @if($grade->value == null)
+                                            <li>Vous n'avez pas de note</li>
+                                        @else
+                                            <li>Votre note : {{ $grade->value }} / 20</li>
                                         @endif
                                     </ul>
                                 @endif
@@ -37,9 +42,25 @@
                                         <li>Salle : {{$session->room->name}} </li>
                                         <li>Professeur : {{$session->report->user->name}} </li>
                                         @if($session->report->content == null & $session->report->name == null)
-                                            <li><a href="">Créer un compte-rendu</a> </li>
+                                            <li><a href="" class="btn btn-outline-info btn-sm">Créer un compte-rendu</a> </li>
                                         @else
-                                            <li><a href="{{ route('report', $session->id) }}">Voir le compte-rendu</a></li>
+                                            <li><a href="{{ route('report', $session->id) }}" class="btn btn-outline-info btn-sm">Voir le compte-rendu</a></li>
+                                        @endif
+                                        @if($session->grades->isNotEmpty())
+                                            <li>
+                                                Les personnes inscrites : 
+                                                <ul>
+                                                @foreach ($session->grades as $grade)
+                                                    <li>{{ $grade->user->name }} 
+                                                        @if( $grade->value == null )
+                                                            <a href="{{ route('add_grade', $grade->id) }}" class="btn btn-outline-secondary btn-sm">Mettre une note</a>
+                                                        @else
+                                                            : {{$grade->value}} / 20 <a href="{{ route('edit_grade', $grade->id) }}" class="btn btn-outline-secondary btn-sm">Editer cette note</a>
+                                                        @endif
+                                                    </li>
+                                                @endforeach
+                                                </ul>
+                                            </li>
                                         @endif
                                     </ul>
                                 @endif

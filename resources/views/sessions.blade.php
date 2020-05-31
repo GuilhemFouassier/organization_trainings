@@ -43,10 +43,10 @@
                                         @endif
                                         @if($session->report->content == null & $session->report->name == null)
                                             @if(Auth::user()->role == "teacher")
-                                                <li><a href="{{ route('add_report', $session->report->id) }}">Créer un compte-rendu</a> </li>
+                                                <li><a href="{{ route('add_report', $session->report->id) }}" class="btn btn-outline-secondary btn-sm">Créer un compte-rendu</a> </li>
                                             @endif
                                         @else
-                                            <li><a href="{{ route('report', $session->report->id) }}">Voir le compte-rendu</a></li>
+                                            <li><a href="{{ route('report', $session->report->id) }}" class="btn btn-outline-secondary btn-sm">Voir le compte-rendu</a></li>
                                         @endif
                                         @if (Auth::user()->role == "user" & $session->grades->isNotEmpty())
                                             @php( $existance = 0 )
@@ -59,14 +59,14 @@
                                                 <li>{{$session->availables_seats}} places restantes : Vous êtes déjà inscrits</li>
                                             @else
                                                 @if ($session->availables_seats > 0)
-                                                    <li>{{$session->availables_seats}} places restantes : <a href="{{route('registration', $session->id) }}"> Inscription </a> </li>
+                                                    <li>{{$session->availables_seats}} places restantes : <a href="{{route('registration', $session->id) }}" class="btn btn-outline-info btn-sm"> Inscription </a> </li>
                                                 @else
                                                     <li>{{$session->availables_seats}} place restante : Vous ne pouvez plus vous inscrire</li>
                                                 @endif
                                             @endif
                                         @elseif ( Auth::user()->role == "user" )
                                                 @if ($session->availables_seats > 0)
-                                                    <li>{{$session->availables_seats}} places restantes :  <a href="{{route('registration', $session->id) }}"> Inscription </a> </li>
+                                                    <li>{{$session->availables_seats}} places restantes :  <a href="{{route('registration', $session->id) }}"  class="btn btn-outline-info btn-sm"> Inscription </a> </li>
                                                 @else
                                                     <li>{{$session->availables_seats}} place restante : Vous ne pouvez plus vous inscrire</li>
                                                 @endif
