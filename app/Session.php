@@ -37,4 +37,13 @@ class Session extends Model
     {
         return $this->hasMany('App\Grade', 'session_id', 'id');
     }
+/**
+     * Get the teacher that has the session.
+     */
+    public function session()
+    {
+        return $this->belongsTo('App\Session', 'training_id', 'id');
+    }
+
+    
 }

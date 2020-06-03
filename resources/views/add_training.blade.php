@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Add a Training</div>
+                <div class="card-header">Add a new training</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,10 +15,29 @@
                     @endif
 
                     {!! Form::open(['url' => "create_training"]) !!}
-                        nom :{!! Form::text('name') !!}<br>
-                        Durée :{!! Form::time('duration') !!}<br>
-                        Professeur : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
-                        {!! Form::submit('Add Training') !!}
+                    <div class="form-group row">
+                            {{ Form::label('name', 'Name', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::text('name', null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                        {{ Form::label('duration', 'Duration', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::time('duration', '07:00', ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                        {{ Form::label('teacher_id', 'Teacher', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::select('teacher_id', $users->pluck('name', 'id') ,null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                            {!! Form::submit('Add a training', ['class' =>"btn btn-primary"]) !!}
+                            </div>
+                        </div>
                     {!! Form::close() !!}
                 </div>
             </div>

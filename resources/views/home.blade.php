@@ -23,26 +23,26 @@
         <div class="col-md-8">
             <div class="card">
                 @if (Auth::user()->role == "adm")
-                    <div class="card-header">Vous êtes: Admin</div>
+                    <div class="card-header">You are : Admin</div>
                         <div class="card-body">
                             <div class="alert" role="alert">
-                                <a href="{{ url('/users') }}">Les utilisateurs</a> - <a href="{{ url('/trainings') }}">Les Formations</a>
+                                <a href="{{ url('/users') }}" class="btn btn-outline-dark">Users</a> - <a href="{{ url('/trainings') }}" class="btn btn-outline-dark">Trainings</a>
                             </div>
                         </div>
                     </div>
                     @elseif (Auth::user()->role == "teacher")
-                    <div class="card-header">Vous êtes: Teacher</div>
+                    <div class="card-header">You are : Teacher</div>
                         <div class="card-body">
                             <div class="alert" role="alert">
-                                <a href="{{ url('/trainings') }}">Les Formations dont je suis responsables</a> - <a href="{{ url('/passed_sessions') }}">Mes sessions passées</a> - <a href="{{ url('/sessions_to_come') }}">Mes sessions à venir</a>
+                                <a href="{{ url('/trainings') }}" class="btn btn-outline-dark">Trainings i'm in charge of</a> - <a href="{{ url('/passed_sessions') }}" class="btn btn-outline-dark">My passed sessions</a> - <a href="{{ url('/sessions_to_come') }}" class="btn btn-outline-dark">My sessions to come</a>
                             </div>
                         </div>
                     </div>
                     @elseif (Auth::user()->role == "user")
-                    <div class="card-header">Vous êtes: Employee</div>
+                    <div class="card-header">You are : Employee</div>
                         <div class="card-body">
                             <div class="alert" role="alert">
-                                <a href="{{ url('/trainings') }}">Les Formations</a> - <a href="{{ url('/passed_sessions') }}">Mes sessions passées</a> - <a href="{{ url('/sessions_to_come') }}">Mes sessions à venir</a>
+                                <a href="{{ url('/trainings') }}" class="btn btn-outline-dark">Trainings</a> - <a href="{{ url('/passed_sessions') }}" class="btn btn-outline-dark">My passed sessions</a> - <a href="{{ url('/sessions_to_come') }}" class="btn btn-outline-dark">My sessions to come</a>
                             </div>
                         </div>
                     </div>

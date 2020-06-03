@@ -4,16 +4,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Les utilisateurs:</div>
+                <div class="card-header">Users :</div>
                 <div class="card-body">
-                <a href="{{ route('add_user') }}">Ajoutez un utilisateur</a><br>
-                    Tous les utilisateurs:
+                <a href="{{ route('add_user') }}" class="btn btn-primary">Add a user</a><br>
+                    All users :
                     <ul>
                     @foreach ($users as $user)
-                        <li> {{$user->name}} ( {{$user->role}} ) - <a href="{{ route('edit_user', $user->id) }}">Edit</a>
+                        <li> {{$user->name}} ( {{$user->role}} ) - <a href="{{ route('edit_user', $user->id) }}" class="btn btn-secondary btn-sm">Edit</a>
                             <ul>
                                 <li>Email : {{$user->email}}</li>
-                                <li>Date Of Birth : {{$user->date_of_birth}}</li>
+                                <li>Birth date : {{$user->date_of_birth}}</li>
                                 <li>Gender : {{$user->gender}}</li>
                                 <li>Job : {{$user->job}}</li>
                             </ul>
