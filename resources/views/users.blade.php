@@ -6,11 +6,11 @@
             <div class="card">
                 <div class="card-header">Users :</div>
                 <div class="card-body">
-                <a href="{{ route('add_user') }}">Add a user</a><br>
+                <a href="{{ route('add_user') }}" class="btn btn-primary">Add a user</a><br>
                     All users :
                     <ul>
                     @foreach ($users as $user)
-                        <li> {{$user->name}} ( {{$user->role}} ) - <a href="{{ route('edit_user', $user->id) }}">Edit</a>
+                        <li> {{$user->name}} ( {{$user->role}} ) - <a href="{{ route('edit_user', $user->id) }}" class="btn btn-secondary btn-sm">Edit</a>
                             <ul>
                                 <li>Email : {{$user->email}}</li>
                                 <li>Birth date : {{$user->date_of_birth}}</li>

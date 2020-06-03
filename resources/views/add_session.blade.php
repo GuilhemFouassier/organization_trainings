@@ -15,13 +15,41 @@
                     @endif
 
                     {!! Form::open(['url' => ["create_session", $training->id]]) !!}
-                        Name :{!! Form::text('name') !!}<br>
-                        Date :{!! Form::date('date') !!}<br>
-                        Available seats :{!! Form::text('availables_seats') !!}<br>
-                        Configuration :{!! Form::select('configuration', ['0' => 'No', '1' => 'Yes']) !!}<br>
-                        Room : {!! Form::select('room_id', $rooms->pluck('name', 'id')) !!}<br>
-                        Teacher : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
-                        {!! Form::submit('Add a session') !!}
+                    <div class="form-group row">
+                            {{ Form::label('name', 'Name', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::text('name', null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                        {{ Form::label('date', 'Date', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::date('date', null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                        {{ Form::label('configuration', 'Configuration', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::select('configuration', ['0' => 'No', '1' => 'Yes'] ,null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                        {{ Form::label('room_id', 'Room', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::select('room_id', $rooms->pluck('name', 'id') ,null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                        {{ Form::label('teacher_id', 'Role', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::select('teacher_id', $users->pluck('name', 'id') ,null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                            {!! Form::submit('Add a Session', ['class' =>"btn btn-primary"]) !!}
+                            </div>
+                        </div>
                     {!! Form::close() !!}
                 </div>
             </div>

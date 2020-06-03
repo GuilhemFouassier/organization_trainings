@@ -15,12 +15,31 @@
                     @endif
 
                     {!! Form::model($training, ['route' => ['update_training', $training->id]]) !!}
-                        Name :{!! Form::text('name') !!}<br>
-                        Duration :{!! Form::time('duration') !!}<br>
-                        Teacher : {!! Form::select('teacher_id', $users->pluck('name', 'id')) !!}<br>
-                        {!! Form::submit('Update the training') !!}
+                    <div class="form-group row">
+                            {{ Form::label('name', 'Name', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::text('name', null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                        {{ Form::label('duration', 'Duration', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::time('duration', null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                        {{ Form::label('teacher_id', 'Teacher', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::select('teacher_id', $users->pluck('name', 'id') ,null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                            {!! Form::submit('Update the training', ['class' =>"btn btn-primary"]) !!}
+                            </div>
+                        </div>
                     {!! Form::close() !!}
-                    <a href="{{ route('delete_training', $training->id) }}">Delete the training</a>
+                    <a href="{{ route('delete_training', $training->id) }}" class="btn btn-danger">Delete the training</a>
                 </div>
             </div>
         </div>

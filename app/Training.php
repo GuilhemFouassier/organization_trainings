@@ -19,6 +19,22 @@ class Training extends Model
      */
     public function session()
     {
-        return $this->belongsTo('App\Session');
+        return $this->belongsTo('App\Session', 'training_id', 'id');
+    }
+
+
+    public static function boot() {
+        parent::boot();
+        self::deleting(function($training) { 
+             $training->session()->each(function($session) {
+                $session->report()->each(function($report) {
+                    $report->forceDelete(); 
+                });
+                $session->grades()->each(function($grade) {
+                    $grade->forceDelete(); 
+                });
+                $session->forceDelete(); 
+             });
+        });
     }
 }

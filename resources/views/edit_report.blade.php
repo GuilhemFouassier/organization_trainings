@@ -14,11 +14,30 @@
                         </div>
                     @endif
                     {!! Form::model($report, ['route' => ['update_report', $report->id]]) !!}
-                        Name :{!! Form::text('name') !!}<br>
-                        Description :<br>{!! Form::textarea('content') !!}<br>
-                        {!! Form::submit('Update the report') !!}
+                    <div class="form-group row">
+                            {{ Form::label('name', 'Name', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::text('name', null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                        {{ Form::label('content', 'Description', ['class' => 'col-md-4 col-form-label text-md-right']) }} 
+                            <div class="col-md-6">
+                                {{ Form::textarea('content', null, ['class' => 'form-control']) }} 
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                            {!! Form::submit('Edit the Report', ['class' =>"btn btn-primary"]) !!}
+                            </div>
+                        </div>
                     {!! Form::close() !!}
-                    <a href="{{ route('delete_report', $report->id) }}">Delete the report</a>
+                    
+                    <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                            <a href="{{ route('delete_report', $report->id) }}" class="btn btn-danger">Delete the report</a>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

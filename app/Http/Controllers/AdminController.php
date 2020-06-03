@@ -9,6 +9,7 @@ use App\Training;
 Use App\Room;
 Use App\Session;
 Use App\Report;
+Use App\Grade;
 
 class AdminController extends Controller
 {
@@ -164,7 +165,20 @@ class AdminController extends Controller
     public function delete_training($id)
     {
         $training = Training::find($id);
-        $training->delete();
+        $sessions = Session::where('training_id', $id)->get();
+         foreach($sessions as $session){
+            $report = Report::where('session_id', $session->id)->get();
+                foreach( $report as $item){
+                    $item->forceDelete();
+                }
+            $grades = Grade::where('session_id', $session->id)->get();
+            foreach( $grades as $grade){
+                $grade->forceDelete();
+            }
+            $session->forceDelete();
+        } 
+        $training->forceDelete();
+
         return redirect()->route('trainings');
     }
 
@@ -241,10 +255,16 @@ class AdminController extends Controller
      */
     public function delete_session($id)
     {
-        $report = Report::all()->where('session_id', $id)->first();
-        $report->forceDelete();
         $session = Session::find($id);
-        $session->delete();
+            $report = Report::where('session_id', $id)->get();
+                foreach( $report as $item){
+                    $item->forceDelete();
+                }
+            $grades = Grade::where('session_id', $id)->get();
+            foreach( $grades as $grade){
+                $grade->forceDelete();
+            }
+        $session->forceDelete();
         return redirect()->route('trainings');
     }
 }

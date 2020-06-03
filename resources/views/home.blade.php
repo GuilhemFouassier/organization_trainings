@@ -26,7 +26,7 @@
                     <div class="card-header">You are : Admin</div>
                         <div class="card-body">
                             <div class="alert" role="alert">
-                                <a href="{{ url('/users') }}">Users</a> - <a href="{{ url('/trainings') }}">Trainings</a>
+                                <a href="{{ url('/users') }}" class="btn btn-outline-dark">Users</a> - <a href="{{ url('/trainings') }}" class="btn btn-outline-dark">Trainings</a>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="card-header">You are : Teacher</div>
                         <div class="card-body">
                             <div class="alert" role="alert">
-                                <a href="{{ url('/trainings') }}">Trainings i'm in charge of</a> - <a href="{{ url('/passed_sessions') }}">My passed sessions</a> - <a href="{{ url('/sessions_to_come') }}">My sessions to come</a>
+                                <a href="{{ url('/trainings') }}" class="btn btn-outline-dark">Trainings i'm in charge of</a> - <a href="{{ url('/passed_sessions') }}" class="btn btn-outline-dark">My passed sessions</a> - <a href="{{ url('/sessions_to_come') }}" class="btn btn-outline-dark">My sessions to come</a>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                     <div class="card-header">You are : Employee</div>
                         <div class="card-body">
                             <div class="alert" role="alert">
-                                <a href="{{ url('/trainings') }}">Trainings</a> - <a href="{{ url('/passed_sessions') }}">My passed sessions</a> - <a href="{{ url('/sessions_to_come') }}">My sessions to come</a>
+                                <a href="{{ url('/trainings') }}" class="btn btn-outline-dark">Trainings</a> - <a href="{{ url('/passed_sessions') }}" class="btn btn-outline-dark">My passed sessions</a> - <a href="{{ url('/sessions_to_come') }}" class="btn btn-outline-dark">My sessions to come</a>
                             </div>
                         </div>
                     </div>

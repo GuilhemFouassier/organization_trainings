@@ -7,25 +7,25 @@
             <div class="card-header">{{$training->name}}'s sessions</div>
             <div class="card-body">
                 @if (Auth::user()->role == "adm")
-                    <a href="{{ route('add_session', $training->id) }}">Add a new session</a>
+                    <a href="{{ route('add_session', $training->id) }}" class="btn btn-info">Add a new session</a>
                 @endif
-                <ul>
+                <ul class="list-group">
                     @if (Auth::user()->role == "adm" || Auth::user()->role == "teacher")
                         @foreach ($sessions as $session)
-                        <li> {{$session->name}}
+                        <li class="list-group-item"> {{$session->name}}
                             <ul>
                                 <li>Date: {{$session->date}} </li>
                                 <li>Room : {{$session->room->name}} </li>
                                 <li>Teacher : {{$session->report->user->name}} </li>
                                 @if (Auth::user()->role == "adm")
-                                <li><a href="{{ route('edit_session', $session->id) }}">Edit the session</a></li>
+                                <li><a href="{{ route('edit_session', $session->id) }}" class="btn btn-primary btn-sm">Edit the session</a></li>
                                 @endif
                                 @if($session->report->content == null & $session->report->name == null)
                                     @if(Auth::user()->role == "teacher")
-                                        <li><a href="{{ route('add_report', $session->report->id) }}">Create a report</a> </li>
+                                        <li><a href="{{ route('add_report', $session->report->id) }}" class="btn btn-primary btn-sm">Create a report</a> </li>
                                     @endif
                                 @else
-                                    <li><a href="{{ route('report', $session->report->id) }}">See the report</a></li>
+                                    <li><a href="{{ route('report', $session->report->id) }}" class="btn btn-primary btn-sm">See the report</a></li>
                                 @endif
                             </ul>
                         </li>
@@ -33,20 +33,17 @@
                     @elseif (Auth::user()->role == "user")
                         @foreach ($sessions as $session)
                             @if ($session->date > Carbon\Carbon::now())
-                                <li> {{$session->name}}
+                                <li class="list-group-item"> {{$session->name}}
                                     <ul>
                                         <li>Date : {{$session->date}} </li>
                                         <li>Room : {{$session->room->name}} </li>
                                         <li>Teacher : {{$session->report->user->name}} </li>
-                                        @if (Auth::user()->role == "adm")
-                                        <li><a href="{{ route('edit_session', $session->id) }}">Edit the session</a></li>
-                                        @endif
                                         @if($session->report->content == null & $session->report->name == null)
                                             @if(Auth::user()->role == "teacher")
-                                                <li><a href="{{ route('add_report', $session->report->id) }}" class="btn btn-outline-secondary btn-sm">Create a report</a> </li>
+                                                <li><a href="{{ route('add_report', $session->report->id) }}" class="btn btn-primary btn-sm">Create a report</a> </li>
                                             @endif
                                         @else
-                                            <li><a href="{{ route('report', $session->report->id) }}" class="btn btn-outline-secondary btn-sm">See the report</a></li>
+                                            <li><a href="{{ route('report', $session->report->id) }}" class="btn btn-primary btn-sm">See the report</a></li>
                                         @endif
                                         @if (Auth::user()->role == "user" & $session->grades->isNotEmpty())
                                             @php( $existance = 0 )
@@ -59,14 +56,14 @@
                                                 <li>{{$session->availables_seats}} available seats : You are already subscribed</li>
                                             @else
                                                 @if ($session->availables_seats > 0)
-                                                    <li>{{$session->availables_seats}} available seats : <a href="{{route('registration', $session->id) }}" class="btn btn-outline-info btn-sm"> Subscribe </a> </li>
+                                                    <li>{{$session->availables_seats}} available seats : <a href="{{route('registration', $session->id) }}" class="btn btn-primary btn-sm"> Subscribe </a> </li>
                                                 @else
                                                     <li>{{$session->availables_seats}} available seats : You can't subscribe</li>
                                                 @endif
                                             @endif
                                         @elseif ( Auth::user()->role == "user" )
                                                 @if ($session->availables_seats > 0)
-                                                    <li>{{$session->availables_seats}} available seats :  <a href="{{route('registration', $session->id) }}"  class="btn btn-outline-info btn-sm"> Subscribe </a> </li>
+                                                    <li>{{$session->availables_seats}} available seats :  <a href="{{route('registration', $session->id) }}"  class="btn btn-primary btn-sm"> Subscribe </a> </li>
                                                 @else
                                                     <li>{{$session->availables_seats}} available seats : You can't subscribe</li>
                                                 @endif
