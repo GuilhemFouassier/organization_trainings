@@ -19,7 +19,7 @@
                                         <li>Room : {{$session->room->name}} </li>
                                         <li>Teacher : {{$session->report->user->name}} </li>
                                         @if($session->report->content != null & $session->report->name != null)
-                                            <li><a href="{{ route('report', $session->id) }}" class="btn btn-secondary btn-sm">See the report</a></li>
+                                            <li><a href="{{ route('report', $session->report->id) }}" class="btn btn-secondary btn-sm">See the report</a></li>
                                         @endif
                                         @if($grade->value == null)
                                             <li>You have no grades</li>
@@ -45,7 +45,7 @@
                                         @if($session->report->content == null & $session->report->name == null)
                                             <li><a href="{{ route('add_report', $session->report->id) }}" class="btn btn-primary btn-sm">Create a report</a> </li>
                                         @else
-                                            <li><a href="{{ route('report', $session->id) }}" class="btn btn-primary btn-sm">See the report</a></li>
+                                            <li><a href="{{ route('report', $session->report->id) }}" class="btn btn-primary btn-sm">See the report</a></li>
                                         @endif
                                         @if($session->grades->isNotEmpty())
                                             <li>
